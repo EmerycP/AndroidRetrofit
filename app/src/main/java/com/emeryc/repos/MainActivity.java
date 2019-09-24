@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         if (response.isSuccessful())
                         {
                             t.setText(response.body().login + " possède " + response.body().followers + " followers!");
+                            et.setText("");
 
                         } else {
                             Log.i("Retrofit: ", response.code() + "");

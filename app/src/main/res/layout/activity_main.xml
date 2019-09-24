@@ -5,18 +5,24 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context=".MainActivity">
 
     <EditText
         android:layout_width="wrap_content"
+        android:layout_marginTop="25dp"
         android:layout_height="wrap_content"
         android:hint="Username"
         android:id="@+id/edit" />
     <Button
+        android:layout_margin="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/coin"
+        android:padding="5dp"
+        android:elevation="5dp"
         android:id="@+id/btn"
-        android:text="Test" />
+        android:text="Rechercher" />
     <TextView
         android:layout_width="wrap_content"
         android:id="@+id/txt"
@@ -26,6 +32,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:id="@+id/txtX"
+        android:layout_marginTop="25dp"
         android:layout_height="wrap_content"
         android:text="Ses repos:"/>
 
