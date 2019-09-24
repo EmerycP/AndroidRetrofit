@@ -16,6 +16,7 @@ import com.emeryc.repos.http.Service;
 import com.emeryc.repos.transfer.Repos;
 import com.emeryc.repos.transfer.Utilisateur;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    List<Repos> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        list = new ArrayList<>();
+        mAdapter = new Adapteur(list, getApplicationContext());
+        recyclerView.setAdapter(mAdapter);
 
         final Service service = RetrofitUtil.get();
         final EditText et = findViewById(R.id.edit);
@@ -80,8 +85,9 @@ public class MainActivity extends AppCompatActivity {
                         if (response.isSuccessful())
                         {
                             List<Repos> r = response.body();
-                            mAdapter = new Adapteur(r, getApplicationContext());
-                            recyclerView.setAdapter(mAdapter);
+                            list.clear();
+                            list.addAll(r);
+                            mAdapter.notifyDataSetChanged();
                         } else {
                             Log.i("Retrofit: ", response.code() + "");
                         }
